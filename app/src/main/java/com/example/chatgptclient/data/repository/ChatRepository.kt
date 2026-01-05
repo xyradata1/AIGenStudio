@@ -7,14 +7,14 @@ import com.example.chatgptclient.data.model.ChatResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ChatRepository() {
+class ChatRepository(private val apiKey: String) {
     private val api: OpenAIApi = Retrofit.Builder()
-        .baseUrl("https://api.replit.com/ai/")
+        .baseUrl("https://api.openai.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(OpenAIApi::class.java)
 
     suspend fun sendMessage(messages: List<ChatMessage>): ChatResponse {
-        return api.getChatCompletion("Bearer Bearer", ChatRequest(messages = messages))
+        return api.getChatCompletion("Bearer $apiKey", ChatRequest(messages = messages))
     }
 }
