@@ -1,7 +1,7 @@
 package com.example.chatgptclient.data.model
 
 data class ChatRequest(
-    val model: String = "gpt-3.5-turbo",
+    val model: String = "gpt-5",
     val messages: List<ChatMessage>
 )
 
