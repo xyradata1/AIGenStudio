@@ -53,7 +53,13 @@ class ChatViewModel : ViewModel() {
             _isLoading.value = true
             _error.value = null
             try {
-                val response = repository.sendMessage(_messages.value)
+                // Keep only last 4 messages for context to save tokens on free tier
+                val contextMessages = if (_messages.value.size > 5) {
+                    _messages.value.takeLast(5)
+                } else {
+                    _messages.value
+                }
+                val response = repository.sendMessage(contextMessages)
                 val assistantMsg = response.choices.first().message
                 _messages.value = _messages.value + assistantMsg
             } catch (e: Exception) {
