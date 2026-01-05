@@ -1,0 +1,27 @@
+# Android Project Files
+build/
+bin/
+*.apk
+*.aar
+*.ap_
+*.dex
+out/
+
+# Android Studio
+.idea/
+.gradle/
+local.properties
+*.iml
+
+# Log files
+*.log
+
+# Sensitive info
+secrets.xml
+google-services.json
+
+# Replit Specific (do NOT ignore .replit or replit.md)
+# Replit AI Integrations
+replit.nix
+.replit
+replit.md
